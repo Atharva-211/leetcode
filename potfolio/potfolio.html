@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spline Model Viewer</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="spline-canvas"></canvas>
+
+    <script src="https://unpkg.com/@splinetool/viewer@latest"></script>
+    <script>
+        const canvas = document.getElementById('spline-canvas');
+
+        // Assuming the library exposes a global SplineViewer
+        SplineViewer.load('https://prod.spline.design/SPVXWI0Gj9pZCyZE/scene.splinecode', canvas)
+            .then((viewer) => {
+                window.addEventListener('resize', () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                    viewer.resize();
+                });
+
+                // Set initial canvas size
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            })
+            .catch((error) => {
+                console.error('Error loading Spline model:', error);
+            });
+    </script>
+</body>
+</html>
