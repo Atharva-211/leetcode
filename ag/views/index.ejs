@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VU Student Card | The Future of Student Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader-logo">VU</div>
+        <div class="loader-text">Excellence Awaits</div>
+    </div>
+    <canvas id="particles"></canvas>
+
+    <nav class="glass-nav">
+        <div class="logo">VU CARD</div>
+        <div class="nav-links">
+            <a href="#features">Privileges</a>
+            <a href="#global-access">Global Access</a>
+            <a href="#testimonials">Voices</a>
+            <a href="#faq">Inquiries</a>
+            <a href="#apply" class="btn-primary magnetic-btn">
+                <%= content.hero.ctaPrimary %>
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="reveal-text"><%- content.hero.title %></h1>
+                <p class="reveal-text delay-1">
+                    <%= content.hero.subtitle %>
+                </p>
+                <div class="cta-group reveal-text delay-2">
+                    <a href="#apply" class="btn-primary magnetic-btn">
+                        <%= content.hero.ctaPrimary %>
+                    </a>
+                    <a href="#learn-more" class="btn-secondary magnetic-btn">
+                        <%= content.hero.ctaSecondary %>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="card-container" id="tilt-card">
+                    <div class="card-glass premium-card">
+                        <div class="card-content">
+                            <div class="card-top">
+                                <span class="chip gold-chip"></span>
+                                <span class="contactless gold-contactless"></span>
+                            </div>
+                            <div class="card-middle">
+                                <div class="card-number">•••• •••• •••• 1234</div>
+                            </div>
+                            <div class="card-bottom">
+                                <div class="card-holder">
+                                    <span class="label">Member Since 2024</span>
+                                    <span class="name">ALEX STUDENT</span>
+                                </div>
+                                <div class="card-logo">VU</div>
+                            </div>
+                        </div>
+                        <div class="card-shine"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span>
+                    <%= content.hero.scrollText %>
+                </span>
+                <div class="arrow-down"></div>
+            </div>
+        </section>
+
+        <section id="features" class="features-sticky-container">
+            <div class="sticky-header">
+                <h2 class="reveal-text"><%- content.features.title %></h2>
+                <p class="reveal-text delay-1">
+                    <%= content.features.subtitle %>
+                </p>
+            </div>
+            <div class="sticky-cards">
+                <% content.features.cards.forEach(card=> { %>
+                    <div class="feature-card-sticky">
+                        <div class="icon">
+                            <%= card.icon %>
+                        </div>
+                        <h3>
+                            <%= card.title %>
+                        </h3>
+                        <p>
+                            <%= card.desc %>
+                        </p>
+                    </div>
+                    <% }); %>
+            </div>
+        </section>
+
+        <section id="global-access" class="global-access">
+            <div class="globe-content">
+                <h2 class="reveal-text"><%- content.globalAccess.title %></h2>
+                <p class="reveal-text delay-1">
+                    <%= content.globalAccess.subtitle %>
+                </p>
+                <div class="stats-grid">
+                    <% content.globalAccess.stats.forEach(stat=> { %>
+                        <div class="stat-item">
+                            <span class="stat-number">
+                                <%= stat.number %>
+                            </span>
+                            <span class="stat-label">
+                                <%= stat.label %>
+                            </span>
+                        </div>
+                        <% }); %>
+                </div>
+            </div>
+            <div class="globe-visual">
+                <div class="globe-wireframe">
+                    <div class="globe-ring"></div>
+                    <div class="globe-ring"></div>
+                    <div class="globe-ring"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calculator" class="calculator-section">
+            <h2>Calculate Your <span class="text-gradient">Advantage</span></h2>
+            <div class="calculator-box glass-panel">
+                <div class="input-group">
+                    <label>Monthly Investment (₹)</label>
+                    <input type="range" id="spendRange" min="1000" max="100000" value="10000" step="1000">
+                    <span id="spendValue">₹10,000</span>
+                </div>
+                <div class="result-group">
+                    <p>Projected Annual Return</p>
+                    <h3 id="savingsValue">₹12,000</h3>
+                    <p class="note">*Includes elite cashback and partner rewards</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <h2><%- content.testimonials.title %></h2>
+            <div class="testimonial-grid">
+                <% content.testimonials.list.forEach(item=> { %>
+                    <div class="testimonial-card">
+                        <p class="quote">"<%= item.quote %>"</p>
+                        <div class="author">
+                            <div class="author-info">
+                                <h4>
+                                    <%= item.name %>
+                                </h4>
+                                <span>
+                                    <%= item.info %>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <h2><%- content.faq.title %></h2>
+            <div class="accordion">
+                <% content.faq.items.forEach(item=> { %>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <%= item.question %>
+                        </button>
+                        <div class="accordion-content">
+                            <p>
+                                <%= item.answer %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 VU Student Card. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
